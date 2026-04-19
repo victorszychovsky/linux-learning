@@ -1,0 +1,71 @@
+Linux: Zadania i Komendy
+Zadanie 1: Operacje na plikach i pobieranie danych
+Treść zadania:
+Przejdź do folderu Dokumenty.
+Otwórz plik1 i wpisz wewnątrz: „Treść pliku 1”.
+Utwórz plik2, wejdź do niego i wpisz: „Treść pliku 2”.
+Pobierz plik pan-tadeusz.txt za pomocą komendy wget.
+
+Bash
+# Wejście do katalogu i tworzenie treści
+wszychowski@localhost:~ $ cd Dokumenty
+wszychowski@localhost:~/Dokumenty $ cat > plik1
+Treść pliku 1
+wszychowski@localhost:~/Dokumenty $ cat > plik2
+Treść pliku 2
+
+# Pobieranie Pana Tadeusza
+wszychowski@localhost:~/Dokumenty $ wget https://wolnelektury.pl/media/book/txt/pan-tadeusz.txt
+
+# Sprawdzenie zawartości
+wszychowski@localhost:~/Dokumenty $ ls
+plik1  plik2  pan-tadeusz.txt
+
+Analiza tekstu (Przykłady)
+Podgląd fragmentów (head, tail, less)
+
+# Pierwsze 5 linii
+wszychowski@localhost:~ $ head -5 pan-tadeusz.txt
+
+# Ostatnie 5 linii
+wszychowski@localhost:~ $ tail -5 pan-tadeusz.txt
+
+# Czytanie z numerowaniem linii (klawisz 'q' aby wyjść)
+wszychowski@localhost:~ $ less -N pan-tadeusz.txt
+
+Przeszukiwanie (grep):
+
+# Szukanie konkretnego słowa
+wszychowski@localhost:~ $ grep "Litwo" pan-tadeusz.txt
+Tip: Użyj tail -f plik.log, aby śledzić zmiany w pliku w czasie rzeczywistym (przydatne przy logach systemowych).
+
+Podstawowe komendy - Kompendium
+Komenda	                        Działanie	                      Przykład
+pwd	                    Ścieżka obecnego katalogu	                  pwd
+ls -a	              Lista wszystkich plików (również ukrytych)	    ls -a
+mkdir	              Tworzenie folderu                          	mkdir NowyFolder
+touch	                Tworzenie pustego pliku	                  touch notatka.txt
+cp -r	              Kopiowanie (rekurencyjne dla folderów)	    cp -r folder1 kopia_folderu
+mv	                  Przenoszenie lub zmiana nazwy	            mv stara_nazwa nowa_nazwa
+rm -rf	            Usuwanie (bez pytania, rekurencyjnie)	      rm -rf folder_do_kosza
+man	                Instrukcja obsługi komendy                	man grep
+alias	              Tworzenie skrótu komendy	                  alias szukaj="grep -rn"
+
+🏗 Zadanie 2: Zarządzanie strukturą katalogów
+Wykonanie krok po kroku:
+Bash
+# 1. Tworzenie struktury
+wszychowski@localhost:~/Dokumenty $ mkdir -p Cwiczenie1/Owoc Cwiczenie1/Zwierze
+wszychowski@localhost:~/Dokumenty $ cd Cwiczenie1/Zwierze
+wszychowski@localhost:~/Zwierze $ mkdir Pies Kot Rybka Arbuz Kwora
+
+# 2. Poprawa błędów i przenoszenie
+wszychowski@localhost:~/Zwierze $ mv Kwora Krowa
+wszychowski@localhost:~/Zwierze $ mv Arbuz /home/wszychowski/Dokumenty/Cwiczenie1/Owoc
+
+# 3. Kopiowanie i praca na folderze Pies2
+wszychowski@localhost:~/Zwierze $ cp -r Pies Pies2
+wszychowski@localhost:~/Zwierze $ touch Pies2/Kundel
+
+# 4. Usuwanie rekurencyjne
+wszychowski@localhost:~/Zwierze $ rm -rf Pies2 
